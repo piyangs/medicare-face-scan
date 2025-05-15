@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Face Scan</title>
+  <style>
+    body {
+      margin: 0;
+      background: #121212;
+      color: white;
+      font-family: Arial, sans-serif;
+    }
+    .wrapper {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      padding: 1rem;
+      background: #1f1f1f;
+      text-align: center;
+      font-size: 1.2rem;
+    }
+    iframe {
+      flex-grow: 1;
+      border: none;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <header>🔬 AI Health Assessment - Medicare Plus</header>
+    <iframe id="scanFrame" allow="camera; microphone" allowfullscreen></iframe>
+  </div>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const iframeUrl = urlParams.get('iframe');
+
+    if (iframeUrl) {
+      document.getElementById('scanFrame').src = iframeUrl;
+    } else {
+      document.body.innerHTML = "<p style='padding: 2rem; text-align: center;'>❌ No scan URL provided.</p>";
+    }
+  </script>
+</body>
+</html>
